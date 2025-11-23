@@ -3,13 +3,11 @@ import { Player } from "./game/player.js";
 import { World } from "./game/world.js";
 import { Car } from "./game/vehicles/car.js";
 import { Traffic } from "./game/ai/traffic.js";
+import { NPCManager } from "./game/npc/npcManager.js";
 
 const canvas = document.getElementById("game");
 
-const renderer = new THREE.WebGLRenderer({
-  canvas,
-  antialias: true
-});
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 
@@ -18,7 +16,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
   0.1,
-  1000
+  2000
 );
 
 camera.position.set(0, 2, 8);
@@ -30,6 +28,7 @@ const car = new Car(scene, camera);
 car.enter(new THREE.Vector3(5, 1, 5));
 
 const traffic = new Traffic(scene);
+const npcs = new NPCManager(scene);
 
 let driving = false;
 
@@ -44,6 +43,8 @@ function animate() {
   else player.update();
 
   traffic.update();
+  npcs.update(player.physics.position, car.car.position);
+
   renderer.render(scene, camera);
 }
 
