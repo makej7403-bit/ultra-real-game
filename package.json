@@ -1,0 +1,16 @@
+{
+  "name": "ultra-real-game",
+  "version": "1.0.0",
+  "description": "A next-generation realistic 3D game built for the web.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.165.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
