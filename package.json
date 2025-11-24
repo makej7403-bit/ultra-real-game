@@ -1,7 +1,7 @@
 {
-  "name": "ultra-real-game",
+  "name": "lgg-liberia-gangster-game",
   "version": "1.0.0",
-  "description": "A next-generation realistic 3D game built for the web.",
+  "description": "LGG — Liberia Gangster Game by Akin S. Sokpah",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
