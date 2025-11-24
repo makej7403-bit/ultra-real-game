@@ -1,30 +1,30 @@
+// src/game/world.js
 import * as THREE from "three";
 import { City } from "./city.js";
 
-export class World {
+export class CityWorld {
   constructor(scene) {
     this.scene = scene;
-
     this.addLights();
     this.addGround();
     this.city = new City(scene);
   }
 
   addLights() {
-    const sun = new THREE.DirectionalLight(0xffffff, 1);
-    sun.position.set(5, 20, 5);
-    this.scene.add(sun);
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2);
+    this.scene.add(hemi);
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.4);
-    this.scene.add(ambient);
+    const sun = new THREE.DirectionalLight(0xffffff, 1.6);
+    sun.position.set(50, 100, 50);
+    this.scene.add(sun);
   }
 
   addGround() {
-    const groundGeo = new THREE.PlaneGeometry(2000, 2000);
-    const groundMat = new THREE.MeshPhongMaterial({ color: 0x4d4d4d });
-    const ground = new THREE.Mesh(groundGeo, groundMat);
-
+    const geo = new THREE.PlaneGeometry(4000, 4000);
+    const mat = new THREE.MeshPhongMaterial({ color: 0x333333 });
+    const ground = new THREE.Mesh(geo, mat);
     ground.rotation.x = -Math.PI / 2;
+    ground.receiveShadow = true;
     this.scene.add(ground);
   }
 }
